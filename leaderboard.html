@@ -1,5 +1,5 @@
 <head>
-  <title>Leaderboard</title>
+  <title>MeteorJS Frontend Leaderboard</title>
   <meta name="viewport" content="width=device-width, user-scalable=no">
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
 </head>
@@ -7,8 +7,8 @@
 <body>
   <div class="outer">
     <div class="logo"></div>
-    <h1 class="title">Leaderboard</h1>
-    <div class="subtitle">Select a scientist to give them points</div>
+    <h1 class="title">MeteorJS Frontend Leaderboard</h1>
+    <div class="subtitle">Select a tech to give them a point. You can vote only once!</div>
     {{> leaderboard}}
   </div>
 </body>
@@ -19,12 +19,19 @@
       {{> player}}
     {{/each}}
   </ol>
-
-  {{#if selectedName}}
+  {{#if voted}}
+    <div class="message">
+      Thank you for your vote!
+    </div>
+  {{else if selectedName}}
     <div class="details">
       <div class="name">{{selectedName}}</div>
-      <button class="inc">Add 5 points</button>
+      <button class="inc">Vote for it</button>
     </div>
+  {{else if error}}
+      <div class="message error">
+          {{error}}
+      </div>
   {{else}}
     <div class="message">Click a player to select</div>
   {{/if}}
