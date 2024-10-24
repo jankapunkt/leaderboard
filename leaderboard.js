@@ -80,7 +80,7 @@ if (Meteor.isServer) {
       }
     },
     async reset () {
-      await Players.update({}, { $set: { score: 0 } }, { multi: true })
+      await Players.updateAsync({}, { $set: { score: 0 } }, { multi: true })
     }
   })
 }
